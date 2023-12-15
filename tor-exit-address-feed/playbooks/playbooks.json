@@ -8,7 +8,7 @@
       "visible": true,
       "image": null,
       "uuid": "562c9a13-35de-4cbe-ae1e-4fa171b075f9",
-      "id": 500,
+      "id": 506,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
@@ -29,7 +29,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1701844117,
+          "lastModifyDate": 1702625461,
           "collection": "/api/3/workflow_collections/562c9a13-35de-4cbe-ae1e-4fa171b075f9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/d6f4b51f-5e83-4940-8908-2b7b93455bf1",
@@ -73,7 +73,6 @@
                 "reputation": "Suspicious",
                 "output_mode": "Return as a JSON",
                 "reputation_map": "{'Good': {{'IndicatorReputation'| picklist('Good') }}, 'Malicious': {{'IndicatorReputation'| picklist('Malicious') }}, 'Suspicious': {{'IndicatorReputation'| picklist('Suspicious') }}, 'TBD': {{'IndicatorReputation'| picklist('TBD') }}, 'No Reputation Available': {{'IndicatorReputation' | picklist('No Reputation Available') }}}",
-                "currentPullTime": "{{arrow.get((arrow.utcnow().int_timestamp | int | abs)).format('YYYY-MM-DDTHH:mm:ss.SSS')+'Z'}}",
                 "threat_intel_feeds_tlp_map": "{}",
                 "threat_intel_feeds_reputation_map": "{}",
                 "threat_intel_feeds_typeOfFeed_map": "{}"
@@ -126,20 +125,6 @@
             },
             {
               "@type": "WorkflowStep",
-              "name": "Save Result",
-              "description": null,
-              "arguments": {
-                "currentPullTime": "{{vars.currentPullTime}}"
-              },
-              "status": null,
-              "top": "580",
-              "left": "920",
-              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-              "group": null,
-              "uuid": "b0e29d03-3131-4ac5-917b-eb2f2a8e75f0"
-            },
-            {
-              "@type": "WorkflowStep",
               "name": "Is data only for mapping",
               "description": null,
               "arguments": {
@@ -174,8 +159,7 @@
                   "input": {
                     "params": []
                   },
-                  "_configuration_schema": "[\n   {\n      \"title\":\"Confidence\",\n      \"name\":\"confidence\",\n      \"type\":\"integer\",\n      \"tooltip\":\"Default Confidence score to be set for the feeds\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"value\":70,\n      \"validation\":{\n         \"minlength\":0,\n         \"maxlength\":100\n      }\n   },\n   {\n      \"title\":\"Reputation\",\n      \"name\":\"reputation\",\n      \"type\":\"select\",\n      \"tooltip\":\"Default Reputation to be set for the feeds\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"options\":[\n         \"Good\",\n         \"Suspicious\",\n         \"Malicious\",\n         \"No Reputation Available\",\n         \"TBD\"\n      ],\n      \"value\":\"Suspicious\"\n   },\n   {\n      \"title\":\"TLP\",\n      \"name\":\"tlp\",\n      \"type\":\"select\",\n      \"tooltip\":\"Default TLP to be set for the feeds\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"options\":[\n         \"Red\",\n         \"Amber\",\n         \"Green\",\n         \"White\"\n      ],\n      \"value\":\"Amber\"\n   }\n]",
-                  "TorFeedLastAlertPullTime": "TorFeedLastAlertPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}"
+                  "_configuration_schema": "[\n   {\n      \"title\":\"Confidence\",\n      \"name\":\"confidence\",\n      \"type\":\"integer\",\n      \"tooltip\":\"Default Confidence score to be set for the feeds\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"value\":70,\n      \"validation\":{\n         \"minlength\":0,\n         \"maxlength\":100\n      }\n   },\n   {\n      \"title\":\"Reputation\",\n      \"name\":\"reputation\",\n      \"type\":\"select\",\n      \"tooltip\":\"Default Reputation to be set for the feeds\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"options\":[\n         \"Good\",\n         \"Suspicious\",\n         \"Malicious\",\n         \"No Reputation Available\",\n         \"TBD\"\n      ],\n      \"value\":\"Suspicious\"\n   },\n   {\n      \"title\":\"TLP\",\n      \"name\":\"tlp\",\n      \"type\":\"select\",\n      \"tooltip\":\"Default TLP to be set for the feeds\",\n      \"required\":true,\n      \"editable\":true,\n      \"visible\":true,\n      \"options\":[\n         \"Red\",\n         \"Amber\",\n         \"Green\",\n         \"White\"\n      ],\n      \"value\":\"Amber\"\n   }\n]"
                 }
               },
               "status": null,
@@ -247,15 +231,6 @@
             },
             {
               "@type": "WorkflowRoute",
-              "name": "Create Record2 -> Save Result",
-              "targetStep": "/api/3/workflow_steps/b0e29d03-3131-4ac5-917b-eb2f2a8e75f0",
-              "sourceStep": "/api/3/workflow_steps/d745a472-63b3-4c56-8bfc-b1211245c1fe",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "49594684-ff30-4c6d-bf16-efa9ff5720c4"
-            },
-            {
-              "@type": "WorkflowRoute",
               "name": "Create Feed List -> Create Record2",
               "targetStep": "/api/3/workflow_steps/d745a472-63b3-4c56-8bfc-b1211245c1fe",
               "sourceStep": "/api/3/workflow_steps/238b0ef9-ebbe-4a86-890b-a8dae5904e2f",
@@ -303,7 +278,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "329b53a1-d578-4145-be03-f37b218790af",
-          "id": 6816,
+          "id": 6888,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -329,26 +304,11 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1701844160,
+          "lastModifyDate": 1702625237,
           "collection": "/api/3/workflow_collections/562c9a13-35de-4cbe-ae1e-4fa171b075f9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/770b057a-6d8e-4ef6-96d3-d607e6957602",
           "steps": [
-            {
-              "@type": "WorkflowStep",
-              "name": "Configuration",
-              "description": null,
-              "arguments": {
-                "fetchTime": "{{arrow.get( arrow.utcnow().timestamp).strftime('%Y-%m-%dT%H:%M:%S.%fZ')}}",
-                "pullTimeMacro": "TorFeedLastPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}"
-              },
-              "status": null,
-              "top": "120",
-              "left": "200",
-              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-              "group": null,
-              "uuid": "6c9d63e1-7d60-4d6e-b204-819639c59a64"
-            },
             {
               "@type": "WorkflowStep",
               "name": "Start",
@@ -369,43 +329,6 @@
             },
             {
               "@type": "WorkflowStep",
-              "name": "Extract Value from Response",
-              "description": null,
-              "arguments": {
-                "lastPullTime": "{% if (vars.steps.Get_Macro_Value.data[\"hydra:member\"] | length) > 0%}{{vars.steps.Get_Macro_Value.data[\"hydra:member\"][0].value }}{% else %}0{% endif %}"
-              },
-              "status": null,
-              "top": "280",
-              "left": "520",
-              "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-              "group": null,
-              "uuid": "8a4d99f5-c44f-4c9f-9493-5b80acb371c9"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Get Macro Value",
-              "description": null,
-              "arguments": {
-                "params": {
-                  "iri": "/api/wf/api/dynamic-variable/?name={{vars.pullTimeMacro}}",
-                  "body": "",
-                  "method": "GET"
-                },
-                "version": "3.2.3",
-                "connector": "cyops_utilities",
-                "operation": "make_cyops_request",
-                "operationTitle": "FSR: Make FortiSOAR API Call",
-                "step_variables": []
-              },
-              "status": null,
-              "top": "200",
-              "left": "360",
-              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
-              "group": null,
-              "uuid": "999b983f-163b-4c9e-b959-8f7db124bcbb"
-            },
-            {
-              "@type": "WorkflowStep",
               "name": "Fetch Indicators",
               "description": null,
               "arguments": {
@@ -419,86 +342,28 @@
                 "workflowReference": "/api/3/workflows/329b53a1-d578-4145-be03-f37b218790af"
               },
               "status": null,
-              "top": "360",
-              "left": "680",
+              "top": "140",
+              "left": "240",
               "stepType": "/api/3/workflow_step_types/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
               "group": null,
               "uuid": "c7c125ad-3304-4f7d-92e4-53d91d992c2a"
-            },
-            {
-              "@type": "WorkflowStep",
-              "name": "Update Pull Time",
-              "description": null,
-              "arguments": {
-                "params": {
-                  "macro": "{{vars.pullTimeMacro}}",
-                  "value": "{{vars.fetchTime}}"
-                },
-                "version": "3.2.3",
-                "connector": "cyops_utilities",
-                "operation": "updatemacro",
-                "operationTitle": "FSR: Create/Update Global Variables",
-                "step_variables": []
-              },
-              "status": null,
-              "top": "440",
-              "left": "840",
-              "stepType": "/api/3/workflow_step_types/0109f35d-090b-4a2b-bd8a-94cbc3508562",
-              "group": null,
-              "uuid": "e0048e82-796f-4d5b-8398-5db8d5f86c88"
             }
           ],
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Get Macro Value -> Extract Value from Response",
-              "targetStep": "/api/3/workflow_steps/8a4d99f5-c44f-4c9f-9493-5b80acb371c9",
-              "sourceStep": "/api/3/workflow_steps/999b983f-163b-4c9e-b959-8f7db124bcbb",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "0a3b358e-2df3-4e4b-82c7-656402b4222e"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Extract Value from Response -> Fetch Indicators",
+              "name": "Start -> Fetch Indicators",
               "targetStep": "/api/3/workflow_steps/c7c125ad-3304-4f7d-92e4-53d91d992c2a",
-              "sourceStep": "/api/3/workflow_steps/8a4d99f5-c44f-4c9f-9493-5b80acb371c9",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "2f805132-7225-4239-8e9d-7c8c0a5427b0"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Start -> Configuration",
-              "targetStep": "/api/3/workflow_steps/6c9d63e1-7d60-4d6e-b204-819639c59a64",
               "sourceStep": "/api/3/workflow_steps/770b057a-6d8e-4ef6-96d3-d607e6957602",
               "label": null,
               "isExecuted": false,
-              "uuid": "c1608f2a-3d3c-4a1a-8cff-9cb64440bc8e"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Configuration -> Get Macro Value",
-              "targetStep": "/api/3/workflow_steps/999b983f-163b-4c9e-b959-8f7db124bcbb",
-              "sourceStep": "/api/3/workflow_steps/6c9d63e1-7d60-4d6e-b204-819639c59a64",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "c17e4d65-6795-4fd4-8c22-1d97e157f7b2"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Fetch Indicators -> Update Pull Time",
-              "targetStep": "/api/3/workflow_steps/e0048e82-796f-4d5b-8398-5db8d5f86c88",
-              "sourceStep": "/api/3/workflow_steps/c7c125ad-3304-4f7d-92e4-53d91d992c2a",
-              "label": null,
-              "isExecuted": false,
-              "uuid": "d77712d0-1a74-486d-8a8d-0e58cd98b753"
+              "uuid": "67313aba-15f0-4e65-91e8-82d6076462b7"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "33bfacb2-e937-4adb-86b1-59aa2e0922b1",
-          "id": 6817,
+          "id": 6889,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -516,7 +381,7 @@
           "name": "Get Indicators",
           "aliasName": null,
           "tag": "#Tor Exit Address Feed",
-          "description": "Retrieves the tor exit list IP addresses from the Tor Exit Address Feed server.",
+          "description": "Retrieves the list of tor exit IP addresses from the Tor Exit Address Feed server.",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -581,7 +446,7 @@
           "groups": [],
           "priority": null,
           "uuid": "93719173-b8e1-49fa-8995-7489668eec64",
-          "id": 6818,
+          "id": 6890,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
