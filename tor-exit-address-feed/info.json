@@ -28,7 +28,8 @@
       {
         "title": "Server URL",
         "name": "server_url",
-        "description": "The service-based URL to which you will connect and perform the automated operations.",
+        "description": "Specify the server URL to which you will connect and perform the automated operations.",
+        "tooltip": "Specify the server URL to which you will connect and perform the automated operations.",
         "type": "text",
         "visible": true,
         "editable": true,
@@ -38,7 +39,8 @@
       {
         "title": "Verify SSL",
         "name": "verify_ssl",
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "description": "Specify whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "tooltip": "Specify whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
         "type": "checkbox",
         "required": false,
         "editable": true,
@@ -50,7 +52,7 @@
   "operations": [
     {
       "operation": "get_indicators",
-      "description": "Retrieves the tor exit list IP addresses from the Tor Exit Address Feed server.",
+      "description": "Retrieves the list of tor exit IP addresses from the Tor Exit Address Feed server.",
       "category": "investigation",
       "annotation": "get_indicators",
       "title": "Get Indicators",
