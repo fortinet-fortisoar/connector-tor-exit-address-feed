@@ -28,8 +28,8 @@
       {
         "title": "Server URL",
         "name": "server_url",
-        "description": "Specify the server URL to connect and perform the automated operations. ",
-        "tooltip": "Specify the server URL to connect and perform the automated operations. ",
+        "description": "Specify the server URL to connect and perform the automated operations.",
+        "tooltip": "Specify the server URL to connect and perform the automated operations.",
         "type": "text",
         "visible": true,
         "editable": true,
